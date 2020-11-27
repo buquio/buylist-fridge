@@ -1,0 +1,105 @@
+<html>
+<head>
+    <!-- <link href="index.css" rel="stylesheet"> -->
+    <style>
+        body{
+            background-color: lightskyblue;
+        }
+        .collector{
+            background-color: #ffffff;
+            width: 400px;
+            height: 100px;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+        }
+        .button-container{
+            margin-left: 75px;
+        }
+        .btn{
+            width: 100px;
+            height: 25px;
+            background-color: moccasin;
+            border-radius: 5px;
+            text-align: center;
+            padding: 5px;
+        }
+        #down{
+            background-color: steelblue;
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>TO BUY:</h2>
+    <div class="collector" id="buy-collector"></div>
+
+    <div class="button-container "> 
+        <button class="btn" id="up">Move UP</button>
+        <button class="btn" id="down" >Move DOWN</button>
+    </div>
+
+
+    <h2>IN THE FRIDGE:</h2>
+    <div class="collector" id="fridge-collector"></div>
+
+
+    <script>
+        let buyCollector;
+        let fridgeCollector;
+
+         window.onload = function() {
+            const upButton = document.querySelector('#up')
+            const downButton = document.querySelector('#down')
+            buyCollector = document.querySelector('#buy-collector')
+            fridgeCollector = document.querySelector('#fridge-collector')
+
+            upButton.addEventListener('click', moveUp)
+            downButton.addEventListener('click', moveDown)
+        }
+
+        const buyList = ['almond milk', 'avocado', 'cheese', 'halloumi' ]
+        const fridgeList = []
+
+//Challenge1: Please fill the fridge with 5 items of your choice. 
+fridgeList.push('banana', 'rice', 'egg', 'beans', 'water')
+
+// .push--adds to the end 
+// .pop--removes from the end
+// .unshift--adds to the beginning
+// .shift--removes to the beginning
+
+//Challenge 2: You have bought some almond milk. 
+//  remove it from the buyList and add it to the items in fridge.
+for(let i=0; i<=buyList.length; i++) {
+    if(buyList[i]=== "almond milk"){
+        // buyList[i]=fridgeList.unshift(buyList[i])//adds to beginning
+        buyList[i]=fridgeList.push(buyList[i]) //adds to the end
+
+    }
+}
+
+//BONUS 1:Write a function that will remove an item from the fridge 
+// and put it in the buyList, on the press of the moveUp button.
+function moveUp() {
+    let item = fridgeList.pop()
+    buyList.push(item)
+    buyCollector.innerHTML = buyList
+    fridgeCollector.innerHTML = fridgeList
+
+}
+
+//BONUS 2:Write a function that will remove the last item in the buyList, 
+//and put it first/last in the fridge.
+function moveDown(){
+    let lastItem = buyList.pop()
+    fridgeList.unshift(lastItem)
+    buyCollector.innerHTML = buyList
+    fridgeCollector.innerHTML = fridgeList
+
+}
+    </script>
+</body>
+</html>
+
