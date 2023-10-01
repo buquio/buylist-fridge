@@ -49,6 +49,10 @@
         let buyCollector;
         let fridgeCollector;
 
+
+        const buyList = ['almond milk', 'avocado', 'cheese', 'halloumi' ]
+        const fridgeList = []
+
          window.onload = function() {
             const upButton = document.querySelector('#up')
             const downButton = document.querySelector('#down')
@@ -59,8 +63,7 @@
             downButton.addEventListener('click', moveDown)
         }
 
-        const buyList = ['almond milk', 'avocado', 'cheese', 'halloumi' ]
-        const fridgeList = []
+
 
 //Challenge1: Please fill the fridge with 5 items of your choice. 
 fridgeList.push('banana', 'rice', 'egg', 'beans', 'water')
